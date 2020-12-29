@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <f:view>
+        <h:head>
+            <title>Sama Marketing</title>
+        </h:head>
+        <h:outputStylesheet library="css" name="main.css" />
+        <h:body>
+            <p:layout id="myLayout" fullPage="true" styleClass="myLayout" >
+                <p:layoutUnit position="north" closable="true" >
+                    <div class="ui-g">
+                        <div class="ui-g-8">
+                            <h:form>
+                                <p:commandLink action="#{samaTache.home()}">
+                                    <h:graphicImage width="100" library="images" name="logo.png" />
+                                </p:commandLink> 
+                            </h:form> 
+                        </div>
+                        <div class="ui-g-4 admin" >
+                            <h:form> 
+                                <h:panelGrid columns="3" cellpadding="5"> 
+                                    <p:menuButton styleClass="btn" value="Admin" icon="fa fa-user" >
+                                        <p:menuitem value="Déconnexion" action="#{connexion.logout()}" />
+                                    </p:menuButton>
+                                    <p:commandButton styleClass="btn" value="Nous Contacter" icon="fa fa-info" />
+                                    <p:commandButton styleClass="btn" value="Aide" icon="fa fa-question" />
+                                </h:panelGrid>
+                            </h:form> 
+                        </div>
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit styleClass="west" position="west" >
+                    <form  jsf:id ="form1" method="GET" class="container">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton icon="fa fa-user-plus" process="@this" styleClass="btn" value="Nouveau Client" action="#{samaTache.ajouterClient()}" />
+                            <p:commandButton icon="fa fa-users" process="@this" styleClass="btn" value="Mes Clients" action="#{samaTache.MesClients()}" />
+                            <p:commandButton icon="fa fa-history" process="@this" styleClass="btn" value="Historique" action="#{samaTache.historique() }" />
+                            <p:commandButton  icon="fa fa-cogs" process="@this" styleClass="btn" value="Paramètres" action="#{samaTache.parametres() }" />  
+                        </h:panelGrid> 
+                    </form>  
+                </p:layoutUnit>
+
+                <p:layoutUnit styleClass="center" position="center">
+                    <ui:insert name="content"/> 
+                </p:layoutUnit> 
+                <p:layoutUnit styleClass="footer" position="south">
+                    <form style="footer">
+                        <div class="footer" align="center">
+                            <h3>Copyright@SamaMarketing-L3TDSI-2020</h3>
+                        </div>
+                    </form> 
+                </p:layoutUnit> 
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
